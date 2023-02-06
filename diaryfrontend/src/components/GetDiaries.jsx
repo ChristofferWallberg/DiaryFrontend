@@ -1,32 +1,32 @@
-import React, { useEffect, useState } from "react";
+import GetUsers from "./GetUsers";
 
 function GetDiaries() {
+  const users = GetUsers();
 
-    const [diaries, setDiaries] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:8080/Users')
-            .then(response => response.json())
-            .then(data => setDiaries(data));
-    }, []);
-
-
-    return (
-        <div className="grow">
-            {diaries.map((user) => (
-                <div className="float-left border-4 border-solid rounded-b-lg p-3 m-5" key={user.id}>
-                    <h3>{user.username}'s Diary</h3>
-                    {user.diary.diaryEntries.map((entry) => (
-                        <div className="">
-                            <h5>Title: {entry.title}:</h5>
-                            <p>Text: {entry.text}</p>
-                            <p>Timestamp: {entry.localDateTimeStamp.toString()}</p>
-                        </div>
-                    ))}
-                </div>
+  return (
+    <div className="flex justify-between">
+      <div className="flex flex-col h-screen">
+        {users.map((user) => (
+          <div key={user.id} className="flex border border-black m-10 p-10">
+            <h1 className="text-lg font-bold">Username: {user.username}</h1>
+            <h2 className="text-lg font-bold">Diary entries:</h2>
+            {user.diary.diaryEntries.map((entry) => (
+              <div
+                key={entry.id}
+                className="flex border border-black m-10 p-10 justify-between"
+              >
+                <h3 className="text-lg font-bold">Title: {entry.title}</h3>
+                <p className="text-base">Text: {entry.text}</p>
+                <p className="text-base">
+                  Timestamp:{entry.localDateTimeStamp}
+                </p>
+              </div>
             ))}
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default GetDiaries;

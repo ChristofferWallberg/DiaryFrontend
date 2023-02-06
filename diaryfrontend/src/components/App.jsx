@@ -4,13 +4,13 @@ import Footer from "./Footer";
 import GetDiaries from "./GetDiaries";
 
 function App() {
-    return (
-    <div class="flex flex-col h-screen">
-        <Header></Header>
-        <GetDiaries></GetDiaries>
-        <Footer></Footer>
+  return (
+    <div className="flex float-left flex-col">
+      <Header></Header>
+      <GetDiaries />
+      <Footer></Footer>
     </div>
-    );
+  );
 }
 
 export default App;

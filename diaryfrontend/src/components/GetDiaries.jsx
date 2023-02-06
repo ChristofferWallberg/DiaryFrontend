@@ -12,8 +12,8 @@ function GetDiaries() {
             <h2 className="text-lg font-bold">Diary entries:</h2>
             {user.diary.diaryEntries.map((entry) => (
               <div
-                key={entry.id}
-                className="flex border border-black m-10 p-10 justify-between"
+                key={entry.id}s
+                className="flex flex-col border border-black m-10 p-10"
               >
                 <h3 className="text-lg font-bold">Title: {entry.title}</h3>
                 <p className="text-base">Text: {entry.text}</p>
